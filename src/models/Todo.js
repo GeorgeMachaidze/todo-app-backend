@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const projectSchema = new Schema({
+const todoSchema = new Schema({
   text: {
     type: Schema.Types.String,
     required: true,
@@ -14,6 +14,7 @@ const projectSchema = new Schema({
     required: true,
   },
 });
-const Project = model("project", projectSchema);
 
-export default Project;
+const Todo = model("Todo", todoSchema);
+
+export default Todo;
