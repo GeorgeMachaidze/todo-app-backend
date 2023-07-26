@@ -1,5 +1,5 @@
 import Todo from "../models/Todo.js";
-import addTodoSchema from "./models/Todo.js";
+import addTodoSchema from "../schemas/add-todo-schema.js";
 import { v4 as uuidv4 } from "uuid";
 
 export const getAllTodos = async (req, res) => {
@@ -19,12 +19,16 @@ export const addTodo = async (req, res) => {
   }
 
   const { text, active } = value;
+
   const id = uuidv4();
+
   await Todo.create({
     text,
     id,
     active,
   });
+
+  return res.status(201).json({ message: "Todo created successfully" });
 };
 
 //put request
