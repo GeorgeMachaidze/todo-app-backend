@@ -1,7 +1,11 @@
 import express from "express";
 import connect from "./database/mongo.js";
 import dotenv from "dotenv";
-import { getAllTodos, addTodo } from "./controllers/todo-controller.js";
+import {
+  getAllTodos,
+  addTodo,
+  deleteTodo,
+} from "./controllers/todo-controller.js";
 import cors from "cors";
 import bodyParser from "body-parser";
 
@@ -17,5 +21,7 @@ app.use(cors());
 app.get("/api/todos", getAllTodos);
 
 app.post("/api/todos", addTodo);
+
+app.delete("/api/todos/:id", deleteTodo);
 
 app.listen(3000);
