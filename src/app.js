@@ -20,13 +20,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.delete("/api/todos/active", deleteAllComplatedTodos);
+
 app.get("/api/todos", getAllTodos);
 
 app.post("/api/todos", addTodo);
 
 app.delete("/api/todos/:id", deleteTodo);
-
-app.delete("/api/todos/active", deleteAllComplatedTodos);
 
 app.put("/api/todos/:id/edit-status", editTodoStatus);
 

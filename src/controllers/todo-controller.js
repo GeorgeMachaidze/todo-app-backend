@@ -70,7 +70,7 @@ export const editTodoStatus = async (req, res) => {
     todo.active = !todo.active;
     await todo.save();
 
-    return res.status(200).json({
+    return res.status(204).json({
       message: "Todo status updated successfully",
       active: todo.active,
     });
