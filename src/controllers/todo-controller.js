@@ -34,13 +34,13 @@ export const addTodo = async (req, res) => {
 export const deleteTodo = async (req, res) => {
   try {
     const { id } = req.params;
-
+    console.log(id);
     if (!uuidv4.isUUID(id)) {
       return res.status(400).json({ error: "Invalid todo ID" });
     }
 
     const todo = await Todo.findOne({ id });
-
+    console.log(todo);
     if (!todo) {
       return res.status(404).json({ error: "Todo not found" });
     }
