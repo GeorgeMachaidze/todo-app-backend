@@ -34,10 +34,9 @@ export const addTodo = async (req, res) => {
 export const deleteTodo = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
 
     const todo = await Todo.findOne({ id });
-    console.log(todo);
+
     if (!todo) {
       return res.status(404).json({ error: "Todo not found" });
     }
@@ -45,6 +44,20 @@ export const deleteTodo = async (req, res) => {
     await todo.deleteOne();
 
     return res.status(200).json({ message: "Todo deleted successfully" });
+  } catch (error) {
+    return res.status(500).json({ error: "Server error" });
+  }
+};
+
+export const deleteAllActiveTodos = async (req, res) => {
+  try {
+    const activeTodos = await Todo.find({ active: true });
+
+    await Todo.deleteMany({ active: true });
+
+    return res
+      .status(200)
+      .json({ message: "All active todos deleted successfully" });
   } catch (error) {
     return res.status(500).json({ error: "Server error" });
   }

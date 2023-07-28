@@ -5,6 +5,7 @@ import {
   getAllTodos,
   addTodo,
   deleteTodo,
+  deleteAllActiveTodos,
 } from "./controllers/todo-controller.js";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -23,5 +24,7 @@ app.get("/api/todos", getAllTodos);
 app.post("/api/todos", addTodo);
 
 app.delete("/api/todos/:id", deleteTodo);
+
+app.delete("/api/todos/active", deleteAllActiveTodos);
 
 app.listen(3000);
