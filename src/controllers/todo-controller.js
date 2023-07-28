@@ -49,11 +49,9 @@ export const deleteTodo = async (req, res) => {
   }
 };
 
-export const deleteAllActiveTodos = async (req, res) => {
+export const deleteAllComplatedTodos = async (req, res) => {
   try {
-    const activeTodos = await Todo.find({ active: true });
-
-    await Todo.deleteMany({ active: true });
+    await Todo.deleteMany({ active: false });
 
     return res
       .status(200)
