@@ -28,6 +28,6 @@ app.post("/api/todos", addTodo);
 
 app.delete("/api/todos/:id", deleteTodo);
 
-app.put("/api/todos/:id/edit-status", editTodoStatus);
+app.put("/api/todos/:id", editTodoStatus);
 
 app.listen(3000);
