@@ -6,6 +6,7 @@ import {
   addTodo,
   deleteTodo,
   deleteAllComplatedTodos,
+  editTodoStatus,
 } from "./controllers/todo-controller.js";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -26,5 +27,7 @@ app.post("/api/todos", addTodo);
 app.delete("/api/todos/:id", deleteTodo);
 
 app.delete("/api/todos/active", deleteAllComplatedTodos);
+
+app.put("/api/todos/:id/edit-status", editTodoStatus);
 
 app.listen(3000);

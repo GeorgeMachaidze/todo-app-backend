@@ -60,3 +60,21 @@ export const deleteAllComplatedTodos = async (req, res) => {
     return res.status(500).json({ error: "Server error" });
   }
 };
+
+export const editTodoStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const todo = await Todo.findOne({ id });
+
+    todo.active = !todo.active;
+    await todo.save();
+
+    return res.status(200).json({
+      message: "Todo status updated successfully",
+      active: todo.active,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: "Server error" });
+  }
+};
