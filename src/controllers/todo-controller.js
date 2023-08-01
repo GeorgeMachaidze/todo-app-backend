@@ -22,13 +22,9 @@ export const addTodo = async (req, res) => {
 
   const id = uuidv4();
 
-  await Todo.create({
-    text,
-    id,
-    active,
-  });
+  const newTodo = new Todo({ text, id, active });
 
-  return res.status(201).json({ message: "Todo created successfully" });
+  return res.status(201).json(newTodo);
 };
 
 export const deleteTodo = async (req, res) => {
