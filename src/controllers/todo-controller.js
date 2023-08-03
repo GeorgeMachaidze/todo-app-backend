@@ -23,7 +23,7 @@ export const addTodo = async (req, res) => {
   const id = uuidv4();
 
   const newTodo = new Todo({ text, id, active });
-
+  await newTodo.save();
   return res.status(201).json(newTodo);
 };
 
